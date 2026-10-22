@@ -20,6 +20,8 @@ button, input, select, textarea { font: inherit; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 { font-family: "Space Grotesk", sans-serif; }
 
+/* header y navegacion */
+
 .site-header {
     align-items: center;
     background: rgb(9, 3, 13);
@@ -140,6 +142,8 @@ h1, h2, h3 { font-family: "Space Grotesk", sans-serif; }
     background: var(--violet); 
     transform: translateY(-2px); 
 }
+
+/* hero: mezcla de logo con la lectura del delivery. */
 
 .hero {
     align-items: center;
@@ -373,4 +377,133 @@ h1, h2, h3 { font-family: "Space Grotesk", sans-serif; }
     height: .4rem; 
     margin-right: .35rem; 
     width: .4rem; 
+}
+
+.hours-card { 
+    align-self: center; 
+    border-left: 1px solid rgba(255, 255, 255, .21); 
+    display: flex; 
+    flex: 0 0 10rem; 
+    flex-direction: column; 
+    gap: .55rem; 
+    margin-top: 5rem; 
+    padding-left: 1.2rem; 
+    position: relative; 
+    z-index: 2; 
+}
+
+.card-kicker, .hours-card > span:not(.card-kicker) { 
+    color: rgba(255, 255, 255, .46); 
+    font-size: .6rem; 
+    letter-spacing: .11em; 
+    text-transform: uppercase; 
+}
+
+.hours-card strong { 
+    font-family: "Space Grotesk", sans-serif; 
+    font-size: 1.1rem; 
+}
+
+.hours-card b { 
+    color: var(--orange); 
+    font-family: "Space Grotesk", sans-serif; 
+    font-size: 1.25rem; 
+    letter-spacing: -.06em; 
+}
+
+.hours-card b small { 
+    color: #fff; 
+    font-size: .58rem; 
+    letter-spacing: .06em; 
+    margin-left: .25rem; 
+}
+
+.hours-rule { 
+    background: rgba(255, 255, 255, .2); 
+    height: 1px; 
+    margin: .6rem 0; 
+    width: 100%; 
+}
+
+.hours-card a { 
+    border-bottom: 1px solid var(--pink); 
+    color: var(--pink); 
+    font-size: .68rem; 
+    font-weight: 700; 
+    margin-top: .7rem; 
+    padding-bottom: .25rem; 
+}
+
+.hours-card a em { 
+    font-style: normal; 
+    margin-left: .45rem; 
+}
+
+.hero-scroll { 
+    align-items: center; 
+    bottom: 3rem; 
+    display: flex; 
+    gap: .7rem; 
+    left: clamp(1.1rem, 8vw, 9rem); 
+    position: absolute; 
+    transform: rotate(-90deg) translateX(-100%); 
+    transform-origin: left bottom; 
+}
+
+.hero-scroll span { 
+    color: rgba(255, 255, 255, .36); 
+    font-size: .58rem; 
+    letter-spacing: .14em; 
+    text-transform: uppercase; 
+}
+
+.hero-scroll i { 
+    background: var(--pink); 
+    height: 1px; 
+    width: 2.5rem; 
+}
+
+/* horarios de atencion y beneficios */
+
+.quick-bar { 
+    background: var(--pink); 
+    display: flex; 
+    gap: 1rem; 
+    justify-content: space-between; 
+    padding: 1.45rem clamp(1.1rem, 8vw, 9rem); 
+}
+
+.quick-bar > div { 
+    align-items: center; 
+    display: flex; 
+    gap: .75rem; 
+}
+
+.quick-icon { 
+    align-items: center; 
+    border: 1px solid rgba(27, 18, 35, .35); 
+    border-radius: 50%; 
+    display: flex; 
+    font-size: 1.05rem; 
+    height: 2.35rem; 
+    justify-content: center; 
+    width: 2.35rem; 
+}
+
+.quick-bar p { 
+    margin: 0; 
+}
+
+.quick-bar strong, .quick-bar small { 
+    display: block; 
+}
+
+.quick-bar strong { 
+    font-size: .72rem; 
+}
+
+.quick-bar small { 
+    font-size: .62rem; 
+    margin-top: .25rem; 
+    opacity: .62; 
 }
