@@ -1,0 +1,1363 @@
+
+/* 1. VARIABLES */
+:root {
+  /* Colores */
+  --black: #09030d;
+  --ink: #1b1223;
+  --paper: #f5eee7;
+  --muted: #7b707e;
+  --pink: #ff2d9a;
+  --violet: #904cff;
+  --orange: #ff9a62;
+  --line: rgba(27, 18, 35, 0.14);
+  --dark-line: rgba(255, 255, 255, 0.16);
+
+  /* Tipografías */
+  --font-body: "DM Sans", sans-serif;
+  --font-head: "Space Grotesk", sans-serif;
+
+  /* Espaciados reutilizados */
+  --gutter: clamp(1.1rem, 8vw, 9rem);      /* laterales de secciones */
+  --gutter-sm: clamp(1.1rem, 5vw, 5.5rem); /* laterales de header y footer */
+  --section-y: clamp(5.5rem, 9vw, 9rem);   /* alto de secciones */
+}
+
+
+/* 2. BASE */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+}
+
+h1 em,
+h2 em {
+  color: var(--pink);
+  font-style: normal;
+}
+
+/* Eyebrow: puntos de color arriba de los titulos */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.4rem;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow > span {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 0 5px rgba(255, 45, 154, 0.13), 0 0 12px var(--pink);
+}
+
+.eyebrow--dark {
+  color: var(--muted);
+}
+
+.eyebrow--dark > span {
+  box-shadow: none;
+}
+
+/* Botones */
+.header-button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.15rem;
+  border: 0;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.button span {
+  font-size: 1rem;
+  line-height: 0;
+}
+
+.button--pink {
+  background: var(--pink);
+  box-shadow: 0 9px 27px rgba(255, 45, 154, 0.23);
+  color: #fff;
+}
+
+.button--pink:hover {
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.16);
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
+.text-button {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid currentColor;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.text-button span {
+  margin-left: 0.5rem;
+}
+
+/* encabezado de la seccion de menu y galeria */
+.content-section {
+  padding: var(--section-y) var(--gutter);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.section-heading > p:last-child {
+  max-width: 20rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* titulos importantes */
+.section-heading h2,
+.prices-copy h2,
+.contact-intro h2 {
+  margin: 0;
+  font-size: clamp(3.1rem, 6.3vw, 6.3rem);
+  letter-spacing: -0.12em;
+  line-height: 0.84;
+}
+
+.section-heading h2 em {
+  color: var(--violet);
+}
+
+
+/* 3. HEADER Y NAVEGACIÓN*/
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem var(--gutter-sm);
+  border-bottom: 1px solid var(--dark-line);
+  background: rgba(9, 3, 13, 0.9);
+  backdrop-filter: blur(18px);
+  color: #fff;
+}
+
+/* Marca */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.brand > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand small {
+  margin-top: 0.18rem;
+  font-family: var(--font-body);
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  opacity: 0.62;
+}
+
+.brand-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0.08rem;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 14px rgba(255, 45, 154, 0.8);
+}
+
+.brand-dot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Navegación */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.4vw, 2.2rem);
+  margin-left: auto;
+}
+
+.main-nav a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.73rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -0.55rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--pink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #fff;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* Botón del header */
+.header-button {
+  background: var(--pink);
+  color: #fff;
+}
+
+.header-button:hover {
+  background: var(--violet);
+  transform: translateY(-2px);
+}
+
+
+/* 4. logo central de neon y lectura nocturna de delivery */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1rem, 4vw, 5rem);
+  min-height: min(790px, calc(100vh - 74px));
+  padding: 4.5rem var(--gutter) 5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 59% 45%, rgba(133, 49, 213, 0.34), transparent 24%),
+    radial-gradient(circle at 27% 18%, rgba(255, 45, 154, 0.13), transparent 27%),
+    var(--black);
+  color: #fff;
+}
+
+/* Textura de puntitos */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.24) 0.7px, transparent 0.7px);
+  background-size: 14px 14px;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+/* Texto */
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 25rem;
+}
+
+.hero h1 {
+  margin-bottom: 1.7rem;
+  font-size: clamp(3.45rem, 6.5vw, 6.5rem);
+  letter-spacing: -0.12em;
+  line-height: 0.82;
+}
+
+.hero h1 em {
+  text-shadow: 0 0 16px rgba(255, 45, 154, 0.55);
+}
+
+.hero-text {
+  max-width: 22rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 4rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.67rem;
+}
+
+.hero-note i {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 10px var(--orange);
+}
+
+/* Logo luminoso */
+.hero-logo-wrap {
+  position: relative;
+  display: flex;
+  flex: 1 1 38rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 35rem;
+}
+
+.hero-logo-wrap img {
+  position: relative;
+  z-index: 3;
+  width: min(35vw, 32rem);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2px rgba(255, 45, 154, 0.75),
+    0 0 28px rgba(255, 45, 154, 0.66),
+    0 0 92px rgba(144, 76, 255, 0.44);
+  transform: rotate(-4deg);
+  animation: logo-float 5.2s ease-in-out infinite, logo-flicker 7s ease-in-out infinite;
+}
+
+.hero-aura {
+  position: absolute;
+  width: 62%;
+  height: 62%;
+  border-radius: 50%;
+  background: var(--pink);
+  filter: blur(50px);
+  opacity: 0.24;
+  animation: aura-pulse 3.7s ease-in-out infinite;
+}
+
+.hero-orbit {
+  position: absolute;
+  width: 46%;
+  height: 96%;
+  border: 1px solid rgba(255, 45, 154, 0.42);
+  border-radius: 50%;
+  transform: rotate(25deg);
+}
+
+.hero-orbit--two {
+  width: 101%;
+  height: 52%;
+  border-color: rgba(144, 76, 255, 0.45);
+  transform: rotate(-59deg);
+}
+
+.hero-spark {
+  position: absolute;
+  z-index: 5;
+  color: #fff;
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px #fff, 0 0 22px var(--pink);
+  animation: sparkle 2.5s ease-in-out infinite;
+}
+
+.hero-spark--one   { top: 17%;    left: 7%; }
+.hero-spark--two   { top: 13%;    right: 8%;  animation-delay: 0.7s; }
+.hero-spark--three { bottom: 16%; left: 12%;  animation-delay: 1.35s; }
+.hero-spark--four  { bottom: 22%; right: 9%;  animation-delay: 1.9s; }
+
+.logo-caption {
+  position: absolute;
+  bottom: 0.9rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.logo-caption span {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.35rem;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 9px var(--pink);
+}
+
+/* Tarjeta de horarios */
+.hours-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 0 0 10rem;
+  flex-direction: column;
+  align-self: center;
+  gap: 0.55rem;
+  margin-top: 5rem;
+  padding-left: 1.2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+.hours-card > span {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.6rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.hours-card strong {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+}
+
+.hours-card b {
+  color: var(--orange);
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  letter-spacing: -0.06em;
+}
+
+.hours-card b small {
+  margin-left: 0.25rem;
+  color: #fff;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+.hours-rule {
+  width: 100%;
+  height: 1px;
+  margin: 0.6rem 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hours-card a {
+  margin-top: 0.7rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--pink);
+  color: var(--pink);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.hours-card a em {
+  margin-left: 0.45rem;
+  font-style: normal;
+}
+
+/* "Deslizá para ver más" */
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: left bottom;
+}
+
+.hero-scroll span {
+  color: rgba(255, 255, 255, 0.36);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-scroll i {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--pink);
+}
+
+
+/*  5. Barra rapida de beneficios y horarios */
+.quick-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.45rem var(--gutter);
+  background: var(--pink);
+}
+
+.quick-bar > div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quick-bar p {
+  margin: 0;
+}
+
+.quick-bar strong,
+.quick-bar small {
+  display: block;
+}
+
+.quick-bar strong {
+  font-size: 0.72rem;
+}
+
+.quick-bar small {
+  margin-top: 0.25rem;
+  font-size: 0.62rem;
+  opacity: 0.62;
+}
+
+.quick-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid rgba(27, 18, 35, 0.35);
+  border-radius: 50%;
+  font-size: 1.05rem;
+}
+
+
+/* 6. Menu y tarjetas de productos */
+.product-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+/* Cada variante define su inclinación en reposo (--rest) y al pasar el mouse (--hover) */
+.product-card {
+  flex: 1 1 16rem;
+  min-width: 0;
+  padding-bottom: 1.2rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #fff;
+  transform: var(--rest, none);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.product-card:hover {
+  box-shadow: 0 15px 40px rgba(27, 18, 35, 0.12);
+  transform: var(--hover, translateY(-7px));
+}
+
+.product-card--pink {
+  --rest: rotate(-1deg);
+  --hover: translateY(-7px) rotate(-1deg);
+}
+
+.product-card--violet {
+  --rest: translateY(1rem);
+  --hover: translateY(-6px);
+}
+
+.product-card--orange {
+  --rest: rotate(1deg);
+  --hover: translateY(-7px) rotate(1deg);
+}
+
+/* Imagen */
+.product-image {
+  position: relative;
+  height: 14rem;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  background: #100914;
+  object-fit: contain;
+  transition: transform 0.4s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.03);
+}
+
+.product-image > span {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Texto */
+.product-card-body {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.2rem 0.75rem;
+}
+
+.product-type {
+  margin-bottom: 0.4rem;
+  color: var(--violet);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-card h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.12rem;
+  letter-spacing: -0.04em;
+}
+
+.product-card-body p:last-child {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.product-card-body strong {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.card-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-left: 1.2rem;
+  padding-bottom: 0.22rem;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+
+/* 7. PRECIOS Y COMBO */
+.prices-section {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(3rem, 9vw, 9rem);
+  padding: var(--section-y) var(--gutter);
+  background: var(--ink);
+  color: #fff;
+}
+
+/* Columna izquierda: texto */
+.prices-copy {
+  flex: 0 1 25rem;
+}
+
+.prices-copy h2 {
+  margin-bottom: 1.5rem;
+}
+
+.prices-copy > p:not(.eyebrow) {
+  max-width: 19rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+/* Columna derecha: combos + lista completa */
+.prices-content {
+  flex: 1 1 38rem;
+  width: 100%;
+  max-width: 48rem;
+}
+
+.combo-list article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.combo-list article:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.combo-list .combo-featured {
+  border-top: 2px solid var(--pink);
+  border-bottom-color: var(--pink);
+}
+
+.combo-list article > div {
+  flex: 1;
+}
+
+.combo-list span {
+  color: var(--pink);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.combo-list h3 {
+  margin: 0.35rem 0;
+  font-size: 1.18rem;
+}
+
+.combo-list p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+}
+
+.combo-list strong {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+}
+
+.combo-list a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.combo-list a:hover {
+  border-color: var(--pink);
+  background: var(--pink);
+}
+
+/* Lista completa de precios */
+.all-prices {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--dark-line);
+}
+
+.all-prices-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.all-prices-heading span {
+  color: var(--orange);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.all-prices-heading small {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.62rem;
+}
+
+.all-prices-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+}
+
+.all-prices-grid p {
+  display: flex;
+  flex: 1 1 12rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.all-prices-grid span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.68rem;
+}
+
+.all-prices-grid strong {
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+}
+
+
+/* 8. GALERÍA */
+.gallery-section {
+  padding-top: clamp(3.5rem, 6vw, 6rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
+  background: #e7dff4;
+}
+
+.section-heading--gallery h2 {
+  font-size: clamp(2.4rem, 4.6vw, 4.2rem);
+}
+
+.section-heading--gallery h2 em {
+  color: var(--pink);
+}
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  flex: 1, 1, 13rem;
+  height: clamp(9rem, 17vw, 14rem);
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.gallery-item--wide {
+  flex: 2, 1, 16rem;
+}
+
+.gallery-item--tall {
+  grid-row: span 2;
+}
+
+.gallery-item:last-child {
+  grid-column: span 3;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #100914;
+  object-fit: contain;
+  transition: transform 0.4s, filter 0.4s;
+}
+
+.gallery-item:hover img {
+  filter: saturate(1.25);
+  transform: scale(1.03);
+}
+
+.gallery-item figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2rem 1rem 0.85rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  color: #fff;
+  font-size: 0.63rem;
+}
+
+/* 9. CONTACTO */
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(3rem, 9vw, 9rem);
+  padding: var(--section-y) var(--gutter);
+  background: var(--pink);
+}
+
+/* Columna izquierda: texto y redes */
+.contact-intro {
+  flex: 0 1 27rem;
+}
+
+.contact-intro h2 {
+  margin-bottom: 1.7rem;
+}
+
+.contact-intro h2 em {
+  color: #fff;
+}
+
+.contact-intro > p:not(.eyebrow) {
+  max-width: 22rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.social-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.8rem;
+}
+
+.social-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(27, 18, 35, 0.4);
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+}
+
+.social-actions a:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.social-actions span {
+  font-size: 1rem;
+}
+
+.contact-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 3rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(27, 18, 35, 0.35);
+}
+
+.contact-hours strong {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+}
+
+.contact-hours span {
+  font-size: 0.67rem;
+}
+
+/* Columna derecha: formulario */
+.contact-form {
+  flex: 1 1 40rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 1.3rem;
+  background: #fff;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.42rem;
+  margin-bottom: 1rem;
+}
+
+.field label,
+.preference-field legend {
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  outline: none;
+  background: #fbf8f5;
+  color: var(--ink);
+  font-size: 0.78rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(144, 76, 255, 0.12);
+}
+
+/* Radios y checkbox */
+.preference-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.15rem 0 1rem;
+  padding: 0;
+  border: 0;
+}
+
+.preference-field legend {
+  flex-basis: 100%;
+  margin-bottom: 0.1rem;
+}
+
+.preference-field label,
+.check-field {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+}
+
+.preference-field input,
+.check-field input {
+  accent-color: var(--pink);
+}
+
+.check-field {
+  margin-bottom: 1.5rem;
+}
+
+/* Acciones */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reset-button {
+  padding: 0.2rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-note {
+  margin: 1.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.6rem;
+  line-height: 1.5;
+}
+
+
+/* 10. FOOTER */
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.35rem var(--gutter-sm);
+  background: var(--black);
+  color: #fff;
+}
+
+.site-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.44);
+  font-size: 0.62rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.62rem;
+}
+
+.footer-links a:hover {
+  color: var(--pink);
+}
+
+
+/* 11. ANIMACIONES  */
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-15px) rotate(1deg); }
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.2;  transform: scale(0.9); }
+  50%      { opacity: 0.45; transform: scale(1.12); }
+}
+
+@keyframes logo-flicker {
+  0%, 10%, 12%, 32%, 34%, 100% { filter: brightness(1); }
+  11%, 33% { filter: brightness(1.14); }
+  68%      { filter: brightness(0.9); }
+  70%      { filter: brightness(1.1); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.7) rotate(0); }
+  50%      { opacity: 1;    transform: scale(1.18) rotate(18deg); }
+}
+
+/* Respeta a quienes tienen desactivadas las animaciones en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* 12. RESPONSIVE */
+/* ----- Tablet ----- */
+@media (max-width: 1050px) {
+  .hero {
+    flex-wrap: wrap;
+  }
+
+  .hero-copy {
+    flex: 1 1 19rem;
+  }
+
+  .hero-logo-wrap {
+    flex-basis: 30rem;
+  }
+
+  .hero-logo-wrap img {
+    width: min(48vw, 30rem);
+  }
+
+  .hours-card {
+    flex-basis: 9rem;
+  }
+
+  .quick-bar {
+    flex-wrap: wrap;
+  }
+
+  .quick-bar > div {
+    flex: 1 1 13rem;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .prices-section,
+  .contact-section {
+    gap: 3rem;
+  }
+}
+
+/* ----- Celular ----- */
+@media (max-width: 760px) {
+
+  /* Header */
+  .site-header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .main-nav {
+    order: 3;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-nav a {
+    font-size: 0.65rem;
+  }
+
+  .header-button {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.67rem;
+  }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-copy {
+    max-width: 30rem;
+  }
+
+  .hero-logo-wrap {
+    flex-basis: auto;
+    width: 100%;
+    min-height: 25rem;
+  }
+
+  .hero-logo-wrap img {
+    width: min(80vw, 29rem);
+  }
+
+  .hours-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 0;
+  }
+
+  .hours-rule {
+    display: none;
+  }
+
+  .hours-card a {
+    flex-basis: 100%;
+    margin-top: 0.2rem;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  /* barra rapida */
+  .quick-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Secciones */
+  .content-section,
+  .prices-section,
+  .contact-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Cards: sin inclinación en celular */
+  .product-cards {
+    flex-direction: column;
+  }
+
+  .product-card {
+    flex: auto;
+  }
+
+  .product-card,
+  .product-card:hover {
+    transform: none;
+  }
+
+  /* Precios y contacto en una columna */
+  .prices-section,
+  .contact-section {
+    flex-direction: column;
+  }
+
+  .prices-copy,
+  .prices-content,
+  .contact-intro,
+  .contact-form {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Galería: 2 columnas */
+
+  .gallery-item {
+    flex: 1 1 calc(50% - 0.35rem);
+    height: 10rem;
+  }
+
+  .gallery-item--wide {
+    flex-basis: 100%;
+  }
+
+  /* Formulario */
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Footer */
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
