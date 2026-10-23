@@ -7,6 +7,7 @@ El sitio está hecho solo con HTML y CSS, es una página de una sola pantalla (O
 Link
 . Repositorio: https://github.com/matipeccia20utn/TRABAJO-PRACTICO-INTERMEDIO.git
 
+. proyecto en vivo : https://elbajoncito.netlify.app
 
 ## Secciones
 
