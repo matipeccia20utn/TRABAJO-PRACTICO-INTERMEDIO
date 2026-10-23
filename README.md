@@ -41,11 +41,9 @@ Botones: **Enviar** (`submit`) y **Limpiar formulario** (`reset`). El envío usa
 
 Se adapta con Media Queries a tres tamaños:
 
-| Dispositivo | Ancho aproximado |
-| --- | --- |
-| Celular | hasta 760px |
-| Tablet | hasta 1050px |
-| Escritorio | más de 1050px |
+Celular | hasta 760px |
+Tablet | hasta 1050px |
+Escritorio | más de 1050px |
 
 
 ## Autor
